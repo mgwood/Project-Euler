@@ -27,22 +27,9 @@ def is_pal(n):
 
 	return palendrome
 
-def pascal_row(n):
-        if n == 0:
-                return [1.0]
-        row = [1.0]
-        r = n+1
-        for ii in range(n):
-                c = ii+1.0
-                next_term = row[ii]*((r-c)/c)
-                row.append(next_term)
-
-        return row
-
 def is_prime(n):
         prime = True
-        if n<=1:
-                return False
+
         if n==2 or n==3:
                 return prime
         
@@ -63,31 +50,28 @@ def is_prime(n):
         return prime
 
 def find_prime_factors(n):
-
-        if is_prime(n):
-                return [[1],[1]]
-        
+        n = math.floor(n)        
         potential_primes = [2,3]
         ii = 1
-        lim_1 = math.floor(n/2+1)
+        lim_1 = math.sqrt(n+6)
         while 6*ii<=lim_1:
                 potential_primes.append(6*ii-1)
                 potential_primes.append(6*ii+1)
                 ii+=1
 
-        
+        jj = 0
         limit = len(potential_primes)
         prime_factors = [];
         factor_count = [];
-        for jj in potential_primes:
-                if n%jj == 0:
-                        if is_prime(jj):
-                                prime_factors.append(jj)
+        while jj<limit:
+                if n%potential_primes[jj] == 0:
+                        if is_prime(potential_primes[jj]):
+                                prime_factors.append(potential_primes[jj])
                                 factor_count.append(1)
                                 new_div = n
-                                while (new_div/jj)%jj==0:
+                                while (new_div/potential_primes[jj])%potential_primes[jj]==0:
                                         factor_count[-1]+=1
-                                        new_div = new_div/jj
+                                        new_div = new_div/potential_primes[jj]
                 jj+=1
         
         return [prime_factors,factor_count]
@@ -104,43 +88,11 @@ def find_factors(n):
                 ii+=1
         return factors
 
-def find_factors2(n):
-        p_facts = find_prime_factors(n)
-
-        factors = p_facts[0]
-        factors.append(1)
-        powers = p_facts[1]
-
-        for kk in range(max(powers)):
-                for ii in factors:
-                        for jj in factors:
-                                f_prime = ii*jj
-                                if f_prime<n and (n%f_prime==0):
-                                        if not (f_prime in factors):
-                                                factors.append(f_prime)
-                                else:
-                                        break
-        return factors
-
 def sumOfFactors(n):
 
-    factors = find_factors2(n)
+    factors = find_factors(n)
 
     return sum(factors)
-
-def is_perfect(n):
-        sum_factors = sumOfFactors(n)
-
-        if sum_factors==n:
-                return True
-        return False
-
-def is_abundant(n):
-        sum_factors = sumOfFactors(n)
-
-        if sum_factors>n:
-                return True
-        return False
 
 def count_factors(n):
         n = math.floor(n)
@@ -181,11 +133,6 @@ def rotate_digits(n):
     
     return rotated
 
-def get_triangle_n(n):
-        if n<=1:
-                return 1
-        else:
-                return n+get_triangle_n(n-1)
 
 def circ_digit_check(n):
         str_n=str(n)
@@ -221,23 +168,6 @@ def nr_factorial(n):
 def count_digits(n):
     return len(str(n))
 
-def count_digits2(n):
-        return 1+math.floor(math.log10(n))
-
 
 def get_digits(n):
     return map(int,str(n))
-
-def is_pandigital(n):
-        pan_len = count_digits(n)
-        pan_array = range(1,pan_len+1)
-        is_pan = True
-
-
-        for dig in get_digits(n):
-                if dig in pan_array:
-                        pan_array.remove(dig)
-                else:
-                        is_pan=False
-
-        return is_pan
