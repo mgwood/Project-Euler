@@ -4,8 +4,7 @@ import time
 
 s = time.time()
 
-N = 3
-
+N = 20
 ways = 2*N*1+mwmath.get_triangle_n(N-1)*2
 
 print ways
