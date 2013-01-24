@@ -24,6 +24,6 @@ for ele in potential_primes:
         if mwmath.is_prime(ele):
             pan_list.append(ele)
     
-print pan_list
+print max(pan_list)
 
 print time.time()-s
