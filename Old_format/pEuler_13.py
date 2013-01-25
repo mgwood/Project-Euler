@@ -1,8 +1,9 @@
-'''Project Euler #13
-Work out the first ten digits of the sum of the following one-hundred
-50-digit numbers.
-'''
+import math
 import mwmath
+import time
+
+s = time.time()
+
 
 def main():
     A = [37107287533902102798797998220837590246510135740250,
@@ -112,3 +113,5 @@ def main():
     d_count = mwmath.count_digits(Sum)
 
     return (Sum/10**(d_count-10))
+
+print time.time()-s

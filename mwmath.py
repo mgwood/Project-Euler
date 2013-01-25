@@ -63,9 +63,10 @@ def is_prime(n):
         return prime
 
 def find_prime_factors(n):
-
-        if is_prime(n):
+        if n==1:
                 return [[1],[1]]
+        if is_prime(n):
+                return [[n],[1]]
         
         potential_primes = [2,3]
         ii = 1
