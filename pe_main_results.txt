@@ -1,0 +1,73 @@
+PE40: Success!
+Time: 0.0958249568939
+
+PE11: Success!
+Time: 0.0968768596649
+
+Execution complete:
+Exercises attempted: 2
+Exercises correct: 2
+
+Percent complete: 100.0%
+PE13: Success!
+Time: 5.79357147217e-05
+
+PE40: Success!
+Time: 0.101722955704
+
+PE11: Success!
+Time: 0.102581977844
+
+Execution complete:
+Exercises attempted: 3
+Exercises correct: 3
+
+Percent complete: 100.0%
+PE13: Success!
+Time: 5.10215759277e-05
+
+PE40: Success!
+Time: 0.108819961548
+
+PE11: Success!
+Time: 0.109641075134
+
+Execution complete:
+Exercises attempted: 3
+Exercises correct: 3
+
+Percent complete: 100.0%
+PE13: Success!
+Time: 8.10623168945e-05
+
+PE40: Success!
+Time: 0.0958740711212
+
+PE11: Success!
+Time: 0.0969369411469
+
+Execution complete:
+Exercises attempted: 3
+Exercises correct: 3
+
+Percent complete: 100.0%
+All solutions completed in less than 1 minute.
+Longest solution time: 0.0969369411469 for problem 0
+
+PE13: Success!
+Time: 6.29425048828e-05
+
+PE40: Success!
+Time: 0.0899260044098
+
+PE11: Success!
+Time: 0.0907218456268
+
+Execution complete:
+Exercises attempted: 3
+Exercises correct: 3
+
+Percent complete: 100.0%
+All solutions completed in less than 1 minute.
+Longest solution time: 0.0907218456268 for problem 11
+

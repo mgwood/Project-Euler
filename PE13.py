@@ -1,9 +1,4 @@
-import math
 import mwmath
-import time
-
-s = time.time()
-
 
 def main():
     A = [37107287533902102798797998220837590246510135740250,
@@ -113,5 +108,3 @@ def main():
     d_count = mwmath.count_digits(Sum)
 
     return (Sum/10**(d_count-10))
-
-print time.time()-s

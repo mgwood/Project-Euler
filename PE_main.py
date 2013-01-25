@@ -1,4 +1,4 @@
-import time, PE6, PE40
+import time, PE40, PE11, PE13
 
 f = open('pe_main_results.txt', 'a')
 
@@ -56,6 +56,27 @@ f.write('Percent complete: '+str(100.0*correct_results/total_results)+'%'+'\n')
 if len(incorrect_results)>0:
     f.write('Incorrect exercies:'+'\n')
     f.write(str(incorrect_results))
+
+sub_minute_count = 0
+
+def max_runtime(run_times,exercises):
+    m = max(run_times)
+    for ele in range(len(run_times)):
+        if run_times[ele]==m:
+            return str(exercises[ele])
+
+for s_time in run_time:
+    if s_time<60:
+        sub_minute_count+=1
+
+if sub_minute_count==total_results:
+    f.write('All solutions completed in less than 1 minute.\n')
+else:
+    f.write(str(sub_minute_count)+' solutions in less than 1 minute.\n')
+
+f.write('Longest solution time: '+str(max(run_time))+' for problem '+max_runtime(run_time,exercises))
+f.write('\n')
+f.write('\n')
 
 f.close()
 

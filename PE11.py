@@ -1,9 +1,3 @@
-import math
-import mwmath
-import time
-
-s = time.time()
-
 def find_grid_max(A):
     cur_max = 0
     l_limit = 3
@@ -68,7 +62,3 @@ def main():
 
     
     return find_grid_max(A)
-
-print main()
-
-print time.time()-s
