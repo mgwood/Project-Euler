@@ -1,39 +1,57 @@
-PE21: Failure!
-Time: 10.1630001068
-
-PE20: Success!
-Time: 0.0
-
-PE40: Success!
-Time: 10.3110001087
-
-PE18: Success!
-Time: 0.0
-
-PE19: Success!
-Time: 10.3120000362
-
-PE16: Success!
-Time: 0.000999927520752
-
-PE17: Success!
-Time: 10.3140001297
-
-PE14: Success!
-Time: 2.98099994659
+PE11: Success!
+Time: 0.000776052474976
 
 PE13: Success!
-Time: 10.3140001297
+Time: 2.09808349609e-05
 
-PE11: Success!
-Time: 2.98199987411
+PE14: Success!
+Time: 3.75067996979
+
+PE16: Success!
+Time: 0.00018310546875
+
+PE17: Success!
+Time: 0.00204682350159
+
+PE18: Success!
+Time: 0.000144004821777
+
+PE19: Success!
+Time: 0.000832080841064
+
+PE20: Success!
+Time: 0.000125169754028
+
+PE21: Success!
+Time: 17.5209310055
+
+PE22: Success!
+Time: 0.0211579799652
+
+PE23: Success!
+Time: 38.6851439476
+
+PE25: Success!
+Time: 0.0418829917908
+
+PE27: Success!
+Time: 3.69193506241
+
+PE28: Success!
+Time: 0.00105094909668
+
+PE29: Success!
+Time: 0.0223500728607
+
+PE40: Success!
+Time: 0.0929019451141
 
 Execution complete:
-Exercises attempted: 10
-Exercises correct: 9
+Exercises attempted: 16
+Exercises correct: 16
 
-Percent complete: 90.0%
-Incorrect exercies:
-['21']All solutions completed in less than 1 minute.
-Longest solution time: 10.3140001297 for problem 17
+Percent complete: 100.0%
+All solutions completed in less than 1 minute.
+Total runtime for all solutions: 63.8321621418 seconds
+Longest solution time: 38.6851439476 for problem 23
 

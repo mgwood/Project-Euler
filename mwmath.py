@@ -66,7 +66,7 @@ def find_prime_factors(n):
         if n==1:
                 return [[1],[1]]
         if is_prime(n):
-                return [[n],[1]]
+                return [[1],[1]]
         
         potential_primes = [2,3]
         ii = 1
@@ -94,7 +94,7 @@ def find_prime_factors(n):
         return [prime_factors,factor_count]
 
 def find_factors(n):
-        n = math.floor(n)
+        n = int(n)
 
         factors = [1]
 

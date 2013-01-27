@@ -2,6 +2,8 @@
 
 '''
 import mwmath
+import time
+
 #Plan:
 #1. write sumOfFactors in mwmath
 #2. build dictionary where key=n and val=sumOfFactors(n)
@@ -35,8 +37,10 @@ def find_amicable_sum(N):
             kk+=1
 
         jj+=1
+
     return amicable_sum
 
 def main():
-    return find_amicable_sum(10000)
-print main()
+    s = time.time()
+    
+    return [find_amicable_sum(10000),time.time()-s]

@@ -12,7 +12,7 @@ The use of "and" when writing out numbers is in compliance with British usage.
 
 '''
 import time
-s = time.time()
+
 def number_letter_count(n,letter_dict):
     thousands = int(n/1000)
     hundreds = int((n%1000)/100)
@@ -43,6 +43,8 @@ def number_letter_count(n,letter_dict):
     return letter_count
 
 def main():
+    s = time.time()
+
     letter_dict={0:0,1:3,2:3,3:5,4:4,5:4,6:3,7:5,8:5,9:4,10:3,11:6,12:6,13:8,14:8,
              15:7,16:7,17:9,18:8,19:8,20:6,30:6,40:5,50:5,60:5,70:7,
              80:6,90:6,100:7,1000:8}
@@ -52,7 +54,4 @@ def main():
     for ii in range(1,1001):
         total_count+=number_letter_count(ii,letter_dict)
 
-    return total_count
-
-print main()
-print time.time()-s
+    return [total_count,time.time()-s]

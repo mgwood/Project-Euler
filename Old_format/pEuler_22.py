@@ -1,14 +1,6 @@
-import math
-import mwmath
 import time
 
 s = time.time()
-
-names = []
-for name in open("names.txt").read().strip().split(','):
-    names.append(name)
-
-names.sort()
 
 def compute_name_score(name):
     letter_dict = {'A':1,'B':2,'C':3,'D':4,'E':5,'F':6,'G':7,'H':8,
@@ -23,10 +15,24 @@ def compute_name_score(name):
 
     return word_score
 
-list_score = 0
-for ind in range(0,len(names)):
-    list_score+=compute_name_score(names[ind])*(ind+1)
+def build_name_list(f_name):
+    names = []
+    for name in open(f_name).read().strip().split(','):
+        names.append(name)
 
-print list_score
+    names.sort()
+    return names
 
+def calc_list_score(names):
+    list_score = 0
+    for ind in range(0,len(names)):
+        list_score+=compute_name_score(names[ind])*(ind+1)
+
+    return list_score
+
+def main():
+    return calc_list_score(build_name_list('names.txt'))
+
+
+print main()
 print time.time()-s

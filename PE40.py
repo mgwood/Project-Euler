@@ -1,3 +1,8 @@
+'''Project Euler #40
+
+'''
+import time
+
 def build_champernowne(n):
     champ_str = ''
 
@@ -9,6 +14,8 @@ def build_champernowne(n):
     return champ_str
 
 def main():
+    s = time.time()
+    
     champ_str = build_champernowne(1000000)
 
     champ_product = 1
@@ -21,4 +28,4 @@ def main():
     champ_product*=int(champ_str[100000-1])
     champ_product*=int(champ_str[1000000-1])
 
-    return champ_product
+    return [champ_product,time.time()-s]

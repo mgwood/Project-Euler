@@ -1,6 +1,8 @@
 '''Project Euler #18
 
 '''
+import time
+
 def reduce_tri_rows(row1,row2):
     new_row = []
 
@@ -25,7 +27,8 @@ def compute_tri(tri):
     return compute_tri(new_tri)
 
 def main():
-
+    s = time.time()
+    
     tri = [[75],
 [95, 64],
 [17, 47, 82],
@@ -42,4 +45,4 @@ def main():
 [63, 66, 04, 68, 89, 53, 67, 30, 73, 16, 69, 87, 40, 31],
 [04, 62, 98, 27, 23, 9, 70, 98, 73, 93, 38, 53, 60, 04, 23]]
 
-    return compute_tri(tri)[0]
+    return [compute_tri(tri)[0],time.time()-s]

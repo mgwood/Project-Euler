@@ -14,6 +14,8 @@ Which starting number, under one million, produces the longest chain?
 
 NOTE: Once the chain starts the terms are allowed to go above one million.
 '''
+import time
+
 def next_term(n):
     if n%2==0:
         return n/2
@@ -50,4 +52,5 @@ def find_max_Collatz_chain(N):
     return [max_length_n, max_length]
 
 def main():
-    return find_max_Collatz_chain(1000001)[0]
+    s = time.time()
+    return [find_max_Collatz_chain(1000001)[0],time.time()-s]

@@ -1,8 +1,8 @@
-import math
-import mwmath
-import time
+'''Project Euler #28
 
-s = time.time()
+'''
+
+import time
 
 def spiral_sum(n):
     if n<=1:
@@ -12,6 +12,7 @@ def spiral_sum(n):
         return add+spiral_sum(n-2)
 
 
-print spiral_sum(1001)
+def main():
+    s = time.time()
 
-print time.time()-s
+    return [spiral_sum(1001),time.time()-s]

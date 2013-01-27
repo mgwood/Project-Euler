@@ -1,4 +1,5 @@
-import time,PE11,PE13,PE14,PE16,PE17,PE18,PE19,PE20,PE21,PE40
+import PE11,PE13,PE14,PE16,PE17,PE18,PE19,PE20,PE21,PE22,PE23,PE25,PE27
+import PE28,PE29,PE32,PE34,PE35,PE40
 
 f = open('pe_main_results.txt', 'w')
 
@@ -17,39 +18,35 @@ correct_results = 0
 total_results = 0
 incorrect_results = []
 
-run_time = [time.time()]
+run_time = []
+
 exercises = []
 
 for key in globals().keys():
     if 'PE' in key:
         exercises.append(key[2:])
 
+exercises.sort()
+
 for ii in exercises:
     #getattr() call is used to programatically call the main() method for each
     #PEX.py where X is both imported and in the exercises array
-    if getattr(globals()['PE'+ii],'main')() == solution_list[int(ii)-1]:
+    cur_PE_solution = getattr(globals()['PE'+ii],'main')()
+    if cur_PE_solution[0] == solution_list[int(ii)-1]:
         f.write('PE'+ii+': Success!\n')
-        if len(run_time)==1:
-            run_time.append(time.time()-(run_time[-1]))
-        else:
-            run_time.append(time.time()-(run_time[-1]+run_time[0]))
+        run_time.append(cur_PE_solution[1])
         f.write('Time: ' + str(run_time[-1])+'\n')
         f.write('\n')
         correct_results+=1
         total_results+=1
     else:
         f.write('PE'+str(ii)+': Failure!\n')
-        if len(run_time)==1:
-            run_time.append(time.time()-(run_time[-1]))
-        else:
-            run_time.append(time.time()-(run_time[-1]+run_time[0]))
-
+        run_time.append(cur_PE_solution[1])
         f.write('Time: ' + str(run_time[-1])+'\n')
         f.write('\n')
         total_results+=1
         incorrect_results.append(ii)
 
-run_time.pop(0)
 
 print 'Execution complete!'
 f.write('Execution complete:'+'\n')
@@ -79,9 +76,9 @@ if sub_minute_count==total_results:
 else:
     f.write(str(sub_minute_count)+' solutions in less than 1 minute.\n')
 
+f.write('Total runtime for all solutions: '+str(sum(run_time))+' seconds\n')
 f.write('Longest solution time: '+str(max(run_time))+' for problem '+max_runtime(run_time,exercises))
 f.write('\n')
 f.write('\n')
 
 f.close()
-

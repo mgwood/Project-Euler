@@ -1,5 +1,6 @@
 '''Project Euler #19
 '''
+import time
 
 def num_yearly_sundays(year,jan_1_day):
     month_lengths = {0:31,1:28,2:31,3:30,4:31,5:30,6:31,7:31,8:30,9:31,10:30,11:31}
@@ -29,6 +30,8 @@ def is_leap_year(n):
 
 
 def main():
+    s = time.time()
+    
     sun_total = 0
     jan_1_1900 = 0
     jan_1_day = (jan_1_1900+365)%7
@@ -41,4 +44,4 @@ def main():
         else:
             jan_1_day = (jan_1_day+366)%7  
   
-    return sun_total
+    return [sun_total,time.time()-s]
