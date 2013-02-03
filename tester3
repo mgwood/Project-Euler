@@ -1,0 +1,6 @@
+a = 1234
+
+for d in int(a/10):
+    print d
+
+    
