@@ -62,6 +62,21 @@ def is_prime(n):
         
         return prime
 
+def build_prime_list(n):
+        potential_primes=[2,3]
+        ii = 1
+        while 6*ii<=(n):
+                potential_primes.append(6*ii-1)
+                potential_primes.append(6*ii+1)
+                ii+=1
+
+        prime_list=[]
+        for jj in potential_primes:
+                if is_prime(jj):
+                        prime_list.append(jj)
+
+        return prime_list
+
 def find_prime_factors(n):
         if n==1:
                 return [[1],[1]]
@@ -242,3 +257,88 @@ def is_pandigital(n):
                         is_pan=False
 
         return is_pan
+
+def is_permutation(a,b):
+        if not len(str(a))==len(str(b)):
+                return False
+        dig_b = get_digits(b)
+        
+        for dig in get_digits(a):
+                if dig in dig_b:
+                        dig_b.remove(dig)
+                else:
+                        return False
+
+        return True
+
+def build_tri_list(n):
+    tri_list = [1]
+    for ii in range(1,n+1):
+        tri_list.append(tri_list[-1]+ii+1)
+
+    return tri_list
+
+
+def build_pent_list(n):
+    pent_list = [1]
+    for ii in range(1,n+1):
+        pent_list.append(pent_list[-1]+3*ii+1)
+
+    return pent_list
+
+def build_hex_list(n):
+    hex_list = [1]
+    for ii in range(1,n+1):
+        hex_list.append(hex_list[-1]+4*ii+1)
+
+    return hex_lis
+
+def build_n_digit_prime_list(n):
+        if n==1:
+                potential_primes=[2,3]
+        else:
+                potential_primes=[]
+        ii = int(1+(10**(n-1))/6)
+        while 6*ii<=(10**n):
+                potential_primes.append(6*ii-1)
+                potential_primes.append(6*ii+1)
+                ii+=1
+
+        prime_list=[]
+        for jj in potential_primes:
+                if is_prime(jj):
+                        prime_list.append(jj)
+
+        return prime_list
+
+def build_prime_permutations_list(n):
+
+    import itertools
+    p_list = list(itertools.permutations(get_digits(n)))
+    
+    p_terms = []
+    digit_count = len(str(n))
+    
+    for ele in p_list:
+        term = ''
+        for ii in ele:
+            term+=str(ii)
+        p_terms.append(int(term))
+        
+    prime_p_terms = []
+    
+    for ii in p_terms:
+        if ii in prime_p_terms:
+                continue
+        if len(str(ii))!=digit_count:
+                continue
+        if ii%2==0:
+            continue
+        if ii%3==0:
+            continue
+        if ii%5==0:
+            continue
+        if is_prime(ii):
+            prime_p_terms.append(ii)
+    
+    return prime_p_terms
