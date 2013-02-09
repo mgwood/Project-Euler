@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ''' Project Euler #62
 '''
 
@@ -53,3 +54,23 @@ while True:
     cube_list.pop(0)
 
     
+=======
+'''Project Euler #34
+
+'''
+import itertools
+import mwmath
+
+def is_cube(n):
+    return is_int(n**(1.0/3))
+
+def is_int(n):
+    return int(str(n)[0:len(str(n))-2])==int(n+0.0001)
+
+lowest = 345
+
+print is_int(345.0)
+
+print is_cube(56623104)
+
+>>>>>>> Home
