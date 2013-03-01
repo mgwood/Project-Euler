@@ -14,13 +14,14 @@ Find the sum of all 0 to 9 pandigital numbers with this property.
 '''
 import mwmath
 import itertools
+import time
 
 def check_substring_properties(n):
     digits = mwmath.get_digits(n)
 
     prime_list = [2,3,5,7,11,13,17]
     if len(digits)==10:
-        for ii in range(1,8):
+        for ii in range(7,0,-1):
             d = 100*digits[ii]+10*digits[ii+1]+digits[ii+2]
 
             if d%prime_list[ii-1]==0:
@@ -28,7 +29,7 @@ def check_substring_properties(n):
             else:
                 return False
     if len(digits)==9:
-        for ii in range(0,7):
+        for ii in range(6,-1,-1):
             d = 100*digits[ii]+10*digits[ii+1]+digits[ii+2]
 
             if d%prime_list[ii-1]==0:
@@ -60,10 +61,11 @@ def main():
     for p in pan_list:
         if check_substring_properties(p):
             pan_sum+=p
-            print p
+            #print p
 
     return pan_sum
 
+s = time.time()
 print main() 
-
+print time.time()-s
     
