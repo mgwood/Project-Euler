@@ -221,7 +221,6 @@ def circ_digit_check(n):
         return True
 
 def nr_factorial(n):
-    n = math.floor(n)
 
     product = 1
     if n<=1:
@@ -243,6 +242,9 @@ def count_digits2(n):
 
 def get_digits(n):
     return map(int,str(n))
+
+def digit_sum(n):
+        return sum(get_digits(n))
 
 def is_pandigital(n):
         pan_len = count_digits(n)
