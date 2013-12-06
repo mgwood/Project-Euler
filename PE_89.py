@@ -31,10 +31,24 @@ def parse_roman(s):
 
     return cur_sum
 
-digits =  len('MCCLXXVIIII')
-min_digits= len(write_roman(parse_roman('MCCLXXVIIII'),''))
+def build_roman_list(f_name):
+    r_list = []
+    for r in open(f_name).read().strip().split('\n'):
+        r_list.append(r)
 
-print digits
-print min_digits
-print parse_roman('MCCLXXVIIII')
+    return r_list
 
+def main():
+    r_list = build_roman_list('roman.txt')
+
+    saved = 0
+    
+    for r in r_list:
+        digits =  len(r)
+        min_digits= len(write_roman(parse_roman(r),''))
+
+        saved += (digits-min_digits)
+
+    return saved
+
+print main()

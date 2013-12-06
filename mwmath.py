@@ -1,6 +1,8 @@
 import math
 
 def perfect_square(n):
+        if n<1:
+                return False
 	if math.floor(math.sqrt(n))==n/math.sqrt(n):
 		return True
 	return False
@@ -81,7 +83,7 @@ def find_prime_factors(n):
         if n==1:
                 return [[1],[1]]
         if is_prime(n):
-                return [[1],[1]]
+                return [[n],[1]]
         
         potential_primes = [2,3]
         ii = 1
@@ -342,3 +344,128 @@ def build_prime_permutations_list(n):
             prime_p_terms.append(ii)
     
     return prime_p_terms
+
+
+def most_frequent_digit_list(array):
+
+        array = map(str,array)
+
+        digit_count = range(len(array[0]))
+
+        max_digit_list = []
+        
+        for jj in digit_count:
+                
+                cur_digit_list = []
+                for ii in range(len(array)):
+                        cur_digit_list.append(array[ii][0])
+                        array[ii]=array[ii][1:]
+
+                max_digit_list.append(most_frequent_ele(cur_digit_list))
+
+        return max_digit_list
+        
+
+def most_frequent_ele(array):
+        count_dict = {}
+        
+        for ele in array:
+                if ele not in count_dict.keys():
+                        count_dict[ele]=1
+                else:
+                        count_dict[ele]+=1
+
+        max_val = -1
+        freq = 0
+        for key in count_dict.keys():
+                if count_dict[key]>freq:
+                        max_val = key
+                        freq = count_dict[key]
+
+        return [max_val,freq]
+
+def concat_prime_list(n,m_list,p_list):
+        result = True
+        
+        for m in m_list:
+                result = result and concat_prime(n,m,p_list)
+
+                if not result:
+                        return False
+
+        return True
+                
+
+def concat_prime(n,m,p_list):
+
+        if min([int(str(n)+str(m)),int(str(m)+str(n))])>p_list[-1]:
+                if is_prime(int(str(n)+str(m))):
+                        return is_prime(int(str(m)+str(n)))
+                else:
+                        return False
+
+        if int(str(n)+str(m)) not in p_list:
+                return False
+        if int(str(m)+str(n)) not in p_list:
+                return False
+
+        return True
+
+def get_reduced_fraction(a,b):
+        if a==b:
+                return [1,1]
+        if a==0:
+                return [0,1]
+        if b==0:
+                return 'divide by zero error'
+
+        
+        A_factors =  find_prime_factors(a)
+        
+        B_factors =  find_prime_factors(b)
+
+        if len(A_factors[0])>len(B_factors[0]):
+                limiting_list = B_factors
+                non_limiting = A_factors
+        else:
+                limiting_list = A_factors
+                non_limiting = B_factors
+
+        #print limiting_list
+        #print non_limiting
+        for ii in range(len(limiting_list[0])):
+                if limiting_list[0][ii] in non_limiting[0]:
+
+                        for jj in range(len(non_limiting[0])):
+                                if non_limiting[0][jj] == limiting_list[0][ii]:
+                                        non_power = non_limiting[1][jj]
+                        
+                        #print limiting_list[0][ii]
+                        #remove duplicates
+                        if limiting_list[1][ii]>non_power:
+                                com = pow(limiting_list[0][ii],non_power)
+                        else:
+                                com = pow(limiting_list[0][ii],limiting_list[1][ii])
+                #print com
+                        a = a/com
+                        b = b/com
+
+        return [a,b]
+                                
+def build_sqrt2_continued_fraction_terms(n):
+        cf_terms = [[1,2]];
+
+        for ii in range(1,n+1):
+                cf_terms.append(get_next_sqrt2_cf_term(cf_terms[ii-1][0],cf_terms[ii-1][1]))
+
+        return cf_terms
+
+def get_next_sqrt2_cf_term(prev_n,prev_d):
+        return [prev_d, 2*prev_d+prev_n]
+
+def get_actual_sqrt2_cf(n,d):
+        #return get_reduced_fraction(n+d,d)
+        return [n+d,d]
+
+
+

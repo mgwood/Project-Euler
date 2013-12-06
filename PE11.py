@@ -92,3 +92,5 @@ def main():
 
     
     return [find_grid_max(A),time.time()-s]
+
+print main()
