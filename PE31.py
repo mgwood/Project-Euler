@@ -1,92 +1,112 @@
 '''Project Euler #31
 '''
+def coin_sum(coin_count,coins):
+    val = 0
+    for ii in range(len(coin_count)):
+        val = val+coin_count[ii]*coins[ii]
+    return val
 
-coins = [1,2,5,10,20,50,100,200]
-limit = 50
-max_c = []
+def reset_coins():
+    coin_count = [0,0,0,0,0,0,0,0]
+    return coin_count
 
-for ii in range(len(coins)):
-    max_c.append(limit/coins[ii]+1)
+def reset_lower_coins(coin_count,n):
+    for ii in range(n+1,len(coin_count)):
+        coin_count[ii]=0
+    return coin_count       
 
-#print max_c
+coins = [200,100,50,20,10,5,2,1]
+coin_count = [0,0,0,0,0,0,0,0]
+max_c = [2,3,5,11,21,41,101,201]
+check = 200
+w=0
 
-def check_change(count,coins,limit):
-    s = 0
-    for ii in range(len(coins)):
-        s += count[ii]*coins[ii]
+for a in range(max_c[0]):
+    #add 200p
+    reset_coins()
+    coin_count[0] = a
+    r = coin_sum(coin_count,coins)
+    if r>check:
+        continue
+    if r==check:
+        w = w+1
+        continue
+    
+    for b in range(max_c[1]):
+        #add 100p
+        reset_lower_coins(coin_count,1)
+        coin_count[1] = b
+        r = coin_sum(coin_count,coins)
+        if r>check:
+            continue
+        if r==check:
+            w = w+1
+            continue
+        
+        for c in range(max_c[2]):
+            #add 50p
+            reset_lower_coins(coin_count,2)
+            coin_count[2] = c
+            r = coin_sum(coin_count,coins)
+            if r>check:
+                continue
+            if r==check:
+                w = w+1
+                continue
 
-    return s
-
-#print check_change([3,1,1,0,2,1,1,0],coins,limit)
-
-if limit==200:
-    ways = 1
-else:
-    ways = 0
-
-for a in range(max_c[6]):
-    run_sum = a*coins[6]
-    if run_sum==limit:
-        ways+1
-        break
-    for b in range(max_c[5]):
-        run_sum += b*coins[5]
-        if run_sum>limit:
-            run_sum = 0
-            break
-        if run_sum==limit:
-            ways+=1
-            run_sum = a*100
-            break
-        for c in range(max_c[4]):
-            run_sum += c*coins[4]
-            if run_sum>limit:
-                run_sum = 0
-                break
-            if run_sum==limit:
-                ways+=1
-                run_sum = a*100+b*50
-                break
             for d in range(max_c[3]):
-                run_sum += d*coins[3]
-                if run_sum>limit:
-                    run_sum = 0
-                    break
-                if run_sum==limit:
-                    ways+=1
-                    run_sum = a*100+b*50+c*20
-                    break
-                for e in range(max_c[2]):
-                    run_sum += e*coins[2]
-                    if run_sum>limit:
-                        run_sum = 0
-                        break
-                    if run_sum==limit:
-                        ways+=1
-                        run_sum = a*100+b*50+c*20+d*10
-                        break
-                    for f in range(max_c[1]):
-                        run_sum += f*coins[1]
-                        if run_sum>limit:
-                            run_sum = 0
-                            break
-                        ways+=1
-                        #print "100: "+str(a)
-                        #print "50: "+str(b)
-                        #print "20: "+str(c)
-                        #print "10: "+str(d)
-                        #print "5: "+str(e)
-                        #print "2: "+str(f)
-                        #print run_sum
-                        run_sum = a*100+b*50+c*20+d*10+e*5
-                        if run_sum>limit:
-                            ways-=1
-                            break
+                #add 20 p
+                reset_lower_coins(coin_count,3)
+                coin_count[3] = d
+                r = coin_sum(coin_count,coins)
+                if r>check:
+                    continue
+                if r==check:
+                    w = w+1
+                    continue
+                
+                for e in range(max_c[4]):
+                    #add 10p
+                    reset_lower_coins(coin_count,4)
+                    coin_count[4] = e
+                    r = coin_sum(coin_count,coins)
+                    if r>check:
+                        continue
+                    if r==check:
+                        w = w+1
+                        continue
+                    
+                    for f in range(max_c[5]):
+                        #add 5p
+                        reset_lower_coins(coin_count,5)
+                        coin_count[5] = f
+                        r = coin_sum(coin_count,coins)
+                        if r>check:
+                            continue
+                        if r==check:
+                            w = w+1
+                            continue
                         
-                        
-                                
+                        for g in range(max_c[6]):
+                            #add 2p
+                            reset_lower_coins(coin_count,6)
+                            coin_count[6] = g
+                            r = coin_sum(coin_count,coins)
+                            if r>check:
+                                continue
+                            if r==check:
+                                w = w+1
+                                continue
 
+                            for h in range(max_c[7]):
+                                #add 1p
+                                coin_count[7] = h
+                                r = coin_sum(coin_count,coins)
+                                if r>check:
+                                    continue
+                                if r<=check:
+                                    w = w+1
+                                    continue
+                    
 print "done"
-print ways
-def main():
-    1
+print w+1
