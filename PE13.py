@@ -115,3 +115,5 @@ def main():
     d_count = mwmath.count_digits(Sum)
 
     return [(Sum/10**(d_count-10)),time.time()-s]
+
+print main()
